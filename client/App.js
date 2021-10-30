@@ -9,9 +9,11 @@ import Home from './src/components/screens/Home'
 import Search from './src/components/screens/Search'
 import Activity from './src/components/screens/Activity'
 import Login from './src/components/screens/Login'
+import Signup from './src/components/screens/Signup'
 import Profile from './src/components/screens/Profile'
 import SearchContentView from './src/components/screenComponents/SearchContentView';
 import FriendProfile from './src/components/screenComponents/FriendProfile';
+
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -58,6 +60,8 @@ const App = () => {
       >
         <Stack.Screen name="bottomTabScreen" component={bottomTabScreen}/>
         <Stack.Screen name="FriendProfile" component={FriendProfile}/>
+        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Signup" component={Signup}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

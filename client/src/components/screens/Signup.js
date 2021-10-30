@@ -2,28 +2,28 @@ import React,{useState} from 'react';
 import { StyleSheet, Text, View,SafeAreaView,TextInput,TouchableOpacity} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 
-const Login = () => {
+const Signup = () => {
   const navigation = useNavigation();
+
+  const [email,setEmail] = useState('');
   const [id,setId] = useState('');
+  const [name,setName] = useState('');
   const [passwd,setPasswd] = useState('');
+  
   return (
     <SafeAreaView style={styles.container}>
       <Text style={{fontSize:25}}>
         Instagram
       </Text>
+      <Text  style={{fontSize:18,marginTop:10,color:'#555555'}}>친구들의 사진과 동영상을 보려면 가입하세요.</Text>
 
-      <View style={styles.loginContainer}>
-        <TextInput style={styles.loginInput} placeholder="이메일 또는 아이디를 입력하세요." value={id} onChangeText={setId}/>
-        <TextInput style={styles.loginInput} placeholder="비밀번호를 입력하세요." value={passwd} onChangeText={setPasswd}/>
-        <TouchableOpacity style={styles.loginButton} onPress={()=>navigation.push('Home')}>
-          <Text style={{color:'white'}}>Login</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={{flexDirection:'row',alignItems:'center',paddingVertical:15}}>
-        <Text>계정이 없으신가요?</Text>
-        <TouchableOpacity onPress={()=>navigation.push('Signup')}>
-          <Text style={{color:'#3493D9',marginLeft:4}}>가입하기</Text>
+      <View style={styles.signupContainer}>
+        <TextInput style={styles.signupInput} placeholder="휴대폰 번호 또는 이메일 주소" value={email} onChangeText={setEmail}/>
+        <TextInput style={styles.signupInput} placeholder="성명" value={id} onChangeText={setId}/>
+        <TextInput style={styles.signupInput} placeholder="사용자 이름" value={name} onChangeText={setName}/>
+        <TextInput style={styles.signupInput} placeholder="비밀번호를 입력하세요" value={passwd} onChangeText={setPasswd}/>
+        <TouchableOpacity style={styles.signupButton} onPress={()=>navigation.push('Profile')}>
+          <Text style={{color:'white'}}>가입하기</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     alignItems:'center',
     flexDirection:'column',
   },
-  loginContainer:{
+  signupContainer:{
     width:'100%',
     flexDirection:'column',
     alignItems:'center',
     marginVertical:30,
   },
-  loginInput:{
+  signupInput:{
     padding:10,
     width:'80%',
     height:40,
@@ -53,15 +53,16 @@ const styles = StyleSheet.create({
     borderColor:'#DEDEDE',
     marginVertical:3
   },
-  loginButton:{
+  signupButton:{
     backgroundColor:'#3493D9',
     width:'80%',
     height:40,
     borderRadius:5,
     flexDirection:'row',
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    marginTop:30
   }
 });
 
-export default Login
+export default Signup

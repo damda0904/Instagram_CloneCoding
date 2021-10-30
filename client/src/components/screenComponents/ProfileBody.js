@@ -1,9 +1,10 @@
 import React,{useState} from 'react'
 import { View, Text,Image,TouchableOpacity } from 'react-native'
 import Feather from "react-native-vector-icons/Feather"
+import {useNavigation} from "@react-navigation/native";
 
 export const ProfileBody = ({name,accountName,profileImage,post,followers,following}) => {
-
+    const navigation = useNavigation();
     return (
         <View>
             {accountName ? (
@@ -15,7 +16,7 @@ export const ProfileBody = ({name,accountName,profileImage,post,followers,follow
                     </View>
                     <View style={{flexDirection:'row',alignItems:'center'}}>
                         <Feather name="plus-square" style={{fontSize:25,color:'black',paddingHorizontal:15}}/>
-                        <Feather name="menu" style={{fontSize:25,color:'black',paddingHorizontal:5}}/>
+                        <Feather name="menu" onPress={()=>navigation.push('Login')} style={{fontSize:25,color:'black',paddingHorizontal:5}}/>
                     </View>
                 </View>
             ) : null}
