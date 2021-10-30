@@ -140,7 +140,7 @@ const SearchContent = () => {
         <View style={styles.SearchContentList}>
         {searchData.map((data,index)=>{
             return(
-                <TouchableOpacity style={styles.SearchContent} onPress={showPost}>
+                <TouchableOpacity key={index} style={styles.SearchContent} onPress={showPost}>
                     <Image source={data.images[0]} style={styles.SearchContentImg}/>
                 </TouchableOpacity>
             );

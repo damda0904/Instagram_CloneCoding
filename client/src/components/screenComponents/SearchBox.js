@@ -7,7 +7,7 @@ const SearchBox = () => {
     return(
         <View style={styles.container}>
             <Ionic name="search" style={styles.search}/>
-            <TextInput placeholder="Search" placeholderTextColor="#909090" style={styles.searchInput} onChangeText={setSearchKeyword} value={searchKeyword}/>
+            <TextInput placeholder="검색" placeholderTextColor="#909090" style={styles.searchInput} onChangeText={setSearchKeyword} value={searchKeyword}/>
         </View>
     )
 }
