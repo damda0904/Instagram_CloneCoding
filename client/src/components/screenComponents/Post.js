@@ -8,8 +8,9 @@ const Post = () => {
     const postInfo = [
         {
             userName: 'mr_salmon',
-            postPersonImage: require('../../storage/images/userImage.jpeg'),
+            userImage: require('../../storage/images/userImage.jpeg'),
             postImage: require('../../storage/images/postImage.jpeg'),
+            postDesc:'게시물을 등록했습니다~~',
             likes:102,
             isLiked:false,
             comments:[{
@@ -19,8 +20,9 @@ const Post = () => {
         },
         {
             userName: 'chillhousekr',
-            postPersonImage: require('../../storage/images/userImage.jpeg'),
+            userImage: require('../../storage/images/userImage.jpeg'),
             postImage: require('../../storage/images/postImage.jpeg'),
+            postDesc:'게시물을 등록했습니다~~게시물을 등록했습니다~~',
             likes:236,
             isLiked:false,
             comments:[
@@ -37,8 +39,9 @@ const Post = () => {
         },
         {
             userName: 'hello_world',
-            postPersonImage: require('../../storage/images/userImage.jpeg'),
+            userImage: require('../../storage/images/userImage.jpeg'),
             postImage: require('../../storage/images/postImage.jpeg'),
+            postDesc:'게시물을 등록했습니다~~게시물을 등록했습니다~~',
             likes:70,
             isLiked:false,
             comments:[
@@ -54,8 +57,9 @@ const Post = () => {
         },
         {
             userName: 'gg_root',
-            postPersonImage: require('../../storage/images/userImage.jpeg'),
+            userImage: require('../../storage/images/userImage.jpeg'),
             postImage: require('../../storage/images/postImage.jpeg'),
+            postDesc:'프사는 고양이지만 강아지가 더좋다',
             likes:7,
             isLiked:false,
             comments:[
@@ -79,7 +83,7 @@ const Post = () => {
                     {/* post header*/}
                     <View style={styles.postHeader}>
                         <View style={styles.postProfile}>
-                            <Image source={data.postPersonImage} style={styles.postPersonImage}/>
+                            <Image source={data.userImage} style={styles.userImage}/>
                             <View>
                                 <Text style={styles.userName}>
                                     {data.userName}
@@ -135,7 +139,7 @@ const Post = () => {
                         alignItems:'center'
                         }}>
                             <Text style={{fontWeight:'700'}}>{data.userName}</Text>
-                            <Text style={{marginLeft:10}}>게시물입니다~~~게시물입니다~~~게시물입니다~~~게시물입니다~~~게시물입니다~~~게시물입니다~~~</Text>
+                            <Text style={{marginLeft:10}}>{data.postDesc}</Text>
                         </Text>
 
                         {/* comment list*/}
@@ -159,7 +163,7 @@ const Post = () => {
                         <View style={{flexDirection:'row',justifyContent:'space-between',paddingVertical:15}}>
                             <View style={{flexDirection:'row',alignItems:'center'}}>
                                 <Image 
-                                source={data.postPersonImage} 
+                                source={data.userImage} 
                                 style={{width:25,height:25,borderRadius:100,backgroundColor:'orange',marginRight:10}}
                                 />
                                 <TextInput placeholder="Add a comment" style={{opacity:0.5}} />
@@ -198,7 +202,7 @@ const styles = StyleSheet.create({
     more:{
         fontSize:20
     },
-    postPersonImage:{
+    userImage:{
         width:40,
         height:40,
         borderRadius:100,
