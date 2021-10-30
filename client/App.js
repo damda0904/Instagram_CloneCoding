@@ -10,6 +10,7 @@ import Search from './src/components/screens/Search'
 import Create from './src/components/screens/Create'
 import Login from './src/components/screens/Login'
 import Profile from './src/components/screens/Profile'
+import SearchContentView from './src/components/screenComponents/SearchContentView';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -52,6 +53,7 @@ const App = () => {
         }}
       >
         <Stack.Screen name="bottomTabScreen" component={bottomTabScreen}/>
+        <Stack.Screen name="post" component={SearchContentView}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

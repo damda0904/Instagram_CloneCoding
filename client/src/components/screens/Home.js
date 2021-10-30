@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, StatusBar, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, StatusBar, Text, View, ScrollView, SafeAreaView } from 'react-native';
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import Feather from "react-native-vector-icons/Feather"
 import Post from '../screenComponents/Post';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <StatusBar backgroundColor="white" barStyle="dark-content" animatied={true}/>
         <View style={styles.headerBar}>
             <FontAwesome name="plus-square-o" style={styles.plusSquare}/>
@@ -16,7 +16,7 @@ const Home = () => {
         <ScrollView>
             <Post/>
         </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         paddingHorizontal:15,
         padding:15,
-        marginTop:40,
         alignItems:'center',
     },
     plusSquare:{

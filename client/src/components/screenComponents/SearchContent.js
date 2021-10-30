@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity,Image} from 'react-native';
-
+import SearchContentView from './SearchContentView';
 
 const SearchContent = () => {
     const searchData = [
@@ -132,16 +132,21 @@ const SearchContent = () => {
         },
     ]
 
+    const [post,setPost] = useState(false);
+    const showPost = () => {
+        setPost(true);
+    }
     return (
         <View style={styles.SearchContentList}>
         {searchData.map((data,index)=>{
             return(
-                <TouchableOpacity style={styles.SearchContent}>
+                <TouchableOpacity style={styles.SearchContent} onPress={showPost}>
                     <Image source={data.images[0]} style={styles.SearchContentImg}/>
                 </TouchableOpacity>
             );
 
         })}
+        {/* {post && <SearchContentView/> } */}
         </View>
     );
 };

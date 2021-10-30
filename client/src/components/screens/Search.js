@@ -1,16 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView,TouchableOpacity,SafeAreaView } from 'react-native';
 import SearchBox from '../screenComponents/SearchBox';
 import SearchContent from '../screenComponents/SearchContent';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Search = () => {
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <SearchBox/>
         <SearchContent/>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 

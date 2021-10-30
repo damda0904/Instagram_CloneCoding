@@ -1,19 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View, ScrollView,TextInput } from 'react-native';
 import Ionic from "react-native-vector-icons/Ionicons"
 
 const SearchBox = () => {
+    const [searchKeyword,setSearchKeyword] = useState("")
     return(
         <View style={styles.container}>
             <Ionic name="search" style={styles.search}/>
-            <TextInput placeholder="Search" placeholderTextColor="#909090" style={styles.searchInput}/>
+            <TextInput placeholder="Search" placeholderTextColor="#909090" style={styles.searchInput} onChangeText={setSearchKeyword} value={searchKeyword}/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
   container:{
-    marginTop:40,
     justifyContent:'center',
     alignItems:'center',
     width:'100%',
@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
       left:25,
   },
   searchInput:{
-      width:'94%',
+      width:'96%',
       backgroundColor:'#EBEBEB',
-      borderRadius:10,
+      borderRadius:8,
       alignItems:'center',
       justifyContent:'center',
       fontSize:15,
-      padding:5,
+      padding:8,
       paddingLeft:40
   }
 });
