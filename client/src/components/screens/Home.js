@@ -3,21 +3,25 @@ import { StyleSheet, StatusBar, Text, View, ScrollView, SafeAreaView } from 'rea
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import Feather from "react-native-vector-icons/Feather"
 import Post from '../screenComponents/Post';
+import {useFonts,Lobster_400Regular} from '@expo-google-fonts/lobster';
 
 const Home = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-        <StatusBar backgroundColor="white" barStyle="dark-content" animatied={true}/>
-        <View style={styles.headerBar}>
-            <FontAwesome name="plus-square-o" style={styles.plusSquare}/>
-            <Text style={styles.title}>Instagram</Text>
-            <Feather name="navigation" style={styles.feather}/>
-        </View>
-        <ScrollView>
-            <Post/>
-        </ScrollView>
-    </SafeAreaView>
-  );
+    let [fontsLoaded] = useFonts({
+        Lobster_400Regular,
+    });
+    return (
+        <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor="white" barStyle="dark-content" animatied={true}/>
+            <View style={styles.headerBar}>
+                <FontAwesome name="plus-square-o" style={styles.plusSquare}/>
+                <Text style={{fontSize:25,fontWeight:"500",fontFamily: 'Lobster_400Regular'}}>Instagram</Text>
+                <Feather name="navigation" style={styles.feather}/>
+            </View>
+            <ScrollView>
+                <Post/>
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -34,10 +38,6 @@ const styles = StyleSheet.create({
     },
     plusSquare:{
         fontSize:24
-    },
-    title:{
-        fontSize:25,
-        fontWeight:"500",
     },
     feather:{
         fontSize:24,
