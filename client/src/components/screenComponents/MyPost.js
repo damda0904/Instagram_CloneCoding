@@ -1,0 +1,164 @@
+import React from 'react'
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+
+const myPost = () => {
+    const myPostList = [
+        {
+            id:0,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:1,
+            images:[
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:2,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg")
+            ]
+        },
+        {
+            id:3,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:4,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:5,
+            images:[
+                require("../../storage/images/postImage.jpeg")
+            ]
+        },
+        {
+            id:3,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:4,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:5,
+            images:[
+                require("../../storage/images/postImage.jpeg")
+            ]
+        },
+        {
+            id:0,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:1,
+            images:[
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:2,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg")
+            ]
+        },
+        {
+            id:3,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:4,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:5,
+            images:[
+                require("../../storage/images/postImage.jpeg")
+            ]
+        },
+        {
+            id:3,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+            ]
+        },
+        {
+            id:4,
+            images:[
+                require("../../storage/images/postImage.jpeg"),
+                require("../../storage/images/userImage.jpeg"),
+            ]
+        },
+        {
+            id:5,
+            images:[
+                require("../../storage/images/postImage.jpeg")
+            ]
+        },
+    ]
+    return (
+        <View style={styles.container}>
+        {myPostList.map((data,index)=>{
+            return(
+                <TouchableOpacity key={index} style={styles.post}>
+                    <Image source={data.images[0]} style={styles.postThumbnail}/>
+                </TouchableOpacity>
+            );
+        })}
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container:{
+        justifyContent:'space-between',
+        flexDirection:'row',
+        flexWrap:'wrap',
+        width:'100%'
+    },
+    post:{
+        width:'33%',
+        height:130,
+        marginBottom:2
+    },
+    postThumbnail:{
+        width:'100%',
+        height:'100%',
+    }
+});
+
+export default myPost
