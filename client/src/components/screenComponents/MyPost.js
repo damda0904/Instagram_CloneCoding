@@ -1,11 +1,8 @@
-import React,{useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity,Image} from 'react-native';
-import SearchContentView from './SearchContentView';
-import {useNavigation} from "@react-navigation/native";
+import React from 'react'
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 
-const SearchContent = () => {
-    const navigation = useNavigation();
-    const searchData = [
+const myPost = () => {
+    const myPostList = [
         {
             id:0,
             images:[
@@ -133,74 +130,35 @@ const SearchContent = () => {
             ]
         },
     ]
-
-  
     return (
-        <View style={styles.SearchContentList}>
-        {searchData.map((data,index)=>{
+        <View style={styles.container}>
+        {myPostList.map((data,index)=>{
             return(
-                <TouchableOpacity onPress={()=>navigation.push('SearchContentView')} key={index} style={styles.SearchContent}>
-                    <Image source={data.images[0]} style={styles.SearchContentImg}/>
+                <TouchableOpacity key={index} style={styles.post}>
+                    <Image source={data.images[0]} style={styles.postThumbnail}/>
                 </TouchableOpacity>
             );
         })}
         </View>
-    );
-};
+    )
+}
 
 const styles = StyleSheet.create({
-    SearchContentList:{
-        flexDirection:'row',
+    container:{
         justifyContent:'space-between',
+        flexDirection:'row',
         flexWrap:'wrap',
         width:'100%'
     },
-    SearchContent:{
+    post:{
         width:'33%',
         height:130,
         marginBottom:2
     },
-    SearchContentImg:{
+    postThumbnail:{
         width:'100%',
-        height:'100%'
-    },
+        height:'100%',
+    }
+});
 
-})
-
-{/* {data.id === 1? (
-                    <View style={{flexDirection:'row',justifyContent:'space-beetween'}}>
-                        <View style={{flexDirection:'row',flexWrap:'wrap',width:261,justifyContent:'space-between'}}>
-                            {data.images.slice(0,4).map((imageData,imgIndex) => {
-                                return(
-                                    <TouchableOpacity>
-                                        <Image source={{imageData}} style={{width:129,height:150}}/>
-                                    </TouchableOpacity>
-                                )
-                            })}
-                        </View>
-                        <TouchableOpacity style={{marginLeft:2}}>
-                            <Image source={data.images[5]} style={{width:129,height:300}}/>
-                        </TouchableOpacity>
-                    </View>
-                ):null}
-
-                {data.id === 2 ? (
-                    <View style={{
-                        flexDirection:'row',
-                        justifyContent:'space-between'
-                    }}>
-                        <TouchableOpacity style={{paddingRight:2}}>
-                            <Image source={data.images[2]} style={{width:260,height:300}}/>
-                        </TouchableOpacity>
-                        <View style={{flexDirection:'row',flexWrap:'wrap',width:120,justifyContent:'space-between'}}>
-                            {data.images.slice[0,2].map((imgData,imgIndex) => {
-                                return(
-                                    <TouchableOpacity style={{paddingBottom:2}}>
-                                        <Image source={imgData} style={{width:129,height:150}}/>
-                                    </TouchableOpacity>
-                                )
-                            })}
-                        </View>
-                    </View>
-                ):null} */}
-export default SearchContent
+export default myPost

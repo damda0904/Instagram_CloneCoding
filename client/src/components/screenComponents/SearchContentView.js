@@ -4,8 +4,10 @@ import Feather from "react-native-vector-icons/Feather"
 import AntDesign from "react-native-vector-icons/AntDesign"
 import Ionic from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
+import {useNavigation} from "@react-navigation/native";
 
 const SearchContentView = (props) => {
+    const navigation = useNavigation();
     const contentData = {
         userName: 'mr_salmon',
         userImage: require('../../storage/images/userImage.jpeg'),
@@ -25,6 +27,9 @@ const SearchContentView = (props) => {
         <SafeAreaView style={styles.container}>
             {/* post header*/}
             <View style={styles.postHeader}>
+                <TouchableOpacity onPress={()=>navigation.goBack()}>
+                    <Ionic name="arrow-back" style={{fontSize:20,color:'black'}}/>
+                </TouchableOpacity>
                 <View style={styles.userInfo}>
                     <Image source={contentData.userImage} style={styles.userImage}/>
                     <Text style={styles.userName}>{contentData.userName}</Text>

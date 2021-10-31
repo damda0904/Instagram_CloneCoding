@@ -13,7 +13,6 @@ const BottomTabView = () => {
         squares.push(
             <View key={index}>
                 <View style={{width:136.7,height:149,marginVertical:1,backgroundColor:'black',opacity:0.1}}>
-
                 </View>
             </View>
         )

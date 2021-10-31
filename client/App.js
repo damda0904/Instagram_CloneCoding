@@ -10,8 +10,10 @@ import Search from './src/components/screens/Search'
 import Activity from './src/components/screens/Activity'
 import Login from './src/components/screens/Login'
 import Signup from './src/components/screens/Signup'
+import Create from './src/components/screens/Create'
 import Profile from './src/components/screens/Profile'
 import SearchContentView from './src/components/screenComponents/SearchContentView';
+import SearchContent from './src/components/screenComponents/SearchContent';
 import FriendProfile from './src/components/screenComponents/FriendProfile';
 
 
@@ -59,9 +61,12 @@ const App = () => {
         }}
       >
         <Stack.Screen name="bottomTabScreen" component={bottomTabScreen}/>
+        <Stack.Screen name="SearchContentView" component={SearchContentView}/>
+        <Stack.Screen name="Search" component={Search}/>
         <Stack.Screen name="FriendProfile" component={FriendProfile}/>
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Signup" component={Signup}/>
+        <Stack.Screen name="Create" component={Create}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

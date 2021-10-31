@@ -4,6 +4,7 @@ import Ionic from "react-native-vector-icons/Ionicons"
 import Feather from "react-native-vector-icons/Feather"
 import {ProfileBody,ProfileButtons} from './ProfileBody';
 import {useNavigation} from "@react-navigation/native";
+
 const FriendProfile = ({route}) => {
     const {name,profileImage,follow,post,followers,following} = route.params;
     const navigation = useNavigation();

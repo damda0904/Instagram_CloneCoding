@@ -1,13 +1,18 @@
 import React,{useState} from 'react';
 import { StyleSheet, Text, View,SafeAreaView,TextInput,TouchableOpacity} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
+import Ionic from "react-native-vector-icons/Ionicons";
 
 const Login = () => {
   const navigation = useNavigation();
+
   const [id,setId] = useState('');
   const [passwd,setPasswd] = useState('');
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.back}>
+          <Ionic name="arrow-back" style={{fontSize:25,color:'black'}}/>
+      </TouchableOpacity>
       <Text style={{fontSize:25}}>
         Instagram
       </Text>
@@ -37,6 +42,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     flexDirection:'column',
+  },
+  back:{
+    position:'absolute',
+    top:60,
+    left:15,
   },
   loginContainer:{
     width:'100%',
