@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     name: { type: String, required: true },
     username: { type: String, required: true },
     password: { type: String, required: true },
-    profileImg: { width: Number, height: Number },
+    profile: { width: Number, height: Number },
     follower: [String],
     following: [String]
 })

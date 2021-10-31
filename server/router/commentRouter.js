@@ -5,7 +5,7 @@ import { isAuth } from '../middleware/isAuth.js';
 const router = express.Router();
 
 //댓글 가져오기
-router.get('/:postId', isAuth, controller.getComments)
+router.get('/:parentId', isAuth, controller.getComments)
 
 //댓글 추가
 router.post('/:postId', isAuth, controller.createComment)
