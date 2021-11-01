@@ -32,6 +32,7 @@ export const isAuth = async (req, res, next) => {
             }
 
             req.userDBId = user.id;   //req를 처리하기 전 req의 customData 설정 가능
+
             next();
         }
     )

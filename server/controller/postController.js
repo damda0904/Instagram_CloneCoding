@@ -75,7 +75,10 @@ export async function like(req, res) {
     const post = await postRepository.like(id, userDBId)
     if (!post) {
         res.status(403).json({ message: "cannot add like yourself" })
-    } else {
+    } else if (post == "404") {
+        res.status(404).json({ message: "post not founded" })
+    }
+    else {
         res.status(201).json(post)
     }
 }
@@ -85,7 +88,9 @@ export async function unlike(req, res) {
     const id = req.params.id;
 
     const post = await postRepository.unlike(id);
+    if (!post) {
+        res.status(400).json("cannot decrease from 0")
+    }
 
-    res.status(201).josn(post);
+    res.status(201).json(post);
 }
-

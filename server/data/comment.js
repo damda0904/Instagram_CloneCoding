@@ -20,14 +20,16 @@ useVirtualId(schema);
 const Comment = mongoose.model('Comment', schema);
 
 export async function createComment(postId, text, userDBId) {
+
     return userRepository.findById(userDBId)
         .then(user => {
+
             return new Comment({
                 text,
                 like: 0,
                 userId: userDBId,
                 username: user.username,
-                profile: user.profile,
+                profile: user.profile ? user.profile : null,
                 parentId: { id: postId, parent: "post" },
             }).save()
                 .then(comment => { return comment.id })
@@ -42,7 +44,7 @@ export async function createChild(commentId, text, userDBId) {
                 like: 0,
                 userId: userDBId,
                 username: user.username,
-                profile: user.profile,
+                profile: user.profile ? user.profile : null,
                 parentId: { id: commentId, parent: "comment" }
             }).save()
                 .then(comment => { return comment.id })
@@ -60,8 +62,10 @@ export async function deleteComment(id, userDBId) {
         })
 }
 
-export async function getComments(postId) {
-    return Comment.find({ parentId }).sort({ createdAt: -1 })
+export async function getComments(parentId) {
+
+    return Comment.find({ 'parentId.id': parentId }).sort({ createdAt: -1 });
+
 }
 
 export async function likeComment(id, userDBId) {
@@ -104,7 +108,7 @@ export async function deleteChild(id) {
 export async function updateChild(id, commentId) {
     return Comment.findById(id)
         .then(comment => {
-            let children = comment.childrenid;
+            let children = comment.childrenId ? comment.childrenId : [];
 
             children.push(commentId);
 

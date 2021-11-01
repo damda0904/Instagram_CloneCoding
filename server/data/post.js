@@ -8,10 +8,10 @@ const schema = mongoose.Schema({
     video: [String],
     hashtag: [String],
     like: { type: Number, required: true },
-    commentId: [Number],
+    commentId: [String],
     userId: { type: String, required: true },
     username: { type: String, required: true },
-    profileImg: { width: Number, height: Number },
+    profile: String,
 
 }, { timestamp: true })
 
@@ -28,7 +28,7 @@ export async function createPost(post, id) {
                 like: 0,
                 userId: id,
                 username: user.username,
-                profileImg: user.profileImg,
+                profile: user.profile,
             }).save()
         })
 }
@@ -66,6 +66,9 @@ export async function deletePost(id, userDBId) {
 export async function like(id, userDBId) {
     return Post.findById(id)
         .then(post => {
+            if (!post) {
+                return "404";
+            }
             if (userDBId === post.userId) {
                 return false;
             }
@@ -79,6 +82,9 @@ export async function like(id, userDBId) {
 export async function unlike(id) {
     return Post.findById(id)
         .then(post => {
+            if (parseInt(post.like) == 0) {
+                return false;
+            }
             const likes = parseInt(post.like) - 1;
 
             return Post.findByIdAndUpdate(id, { like: likes })
@@ -89,7 +95,7 @@ export async function unlike(id) {
 export async function updateComment(postId, commentId) {
     return Post.findById(postId)
         .then(post => {
-            let comments = post.commentId;
+            let comments = post.commentId ? post.commentId : [];
             comments.push(commentId);
             return Post.findByIdAndUpdate(postId, { commentId: comments })
         })
