@@ -1,13 +1,34 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import { StyleSheet, Text, View,SafeAreaView,TextInput,TouchableOpacity} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import Ionic from "react-native-vector-icons/Ionicons";
+import Axios from 'axios'
 
 const Login = () => {
+  
   const navigation = useNavigation();
 
   const [id,setId] = useState('');
   const [passwd,setPasswd] = useState('');
+  const [isLoginSuccess,setIsLoginSuccess] = useState('')
+
+  const idValue = useRef();
+  const pwdValue = useRef();
+  const sendLogin = () => {
+    let loginInfo = {
+      userId:idValue,
+      password:pwdValue
+    }
+    Axios.post('/login',loginInfo)
+    .then(response=>{
+      if(response.stasus === 401){
+        console.log('fail login')
+      }else{
+        console.log('success login')
+      }
+    })
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.back}>
@@ -18,10 +39,11 @@ const Login = () => {
       </Text>
 
       <View style={styles.loginContainer}>
-        <TextInput style={styles.loginInput} placeholder="이메일 또는 아이디를 입력하세요." value={id} onChangeText={setId}/>
-        <TextInput style={styles.loginInput} placeholder="비밀번호를 입력하세요." value={passwd} onChangeText={setPasswd}/>
+        <TextInput ref={idValue} style={styles.loginInput} placeholder="이메일 또는 아이디를 입력하세요." value={id} onChangeText={setId}/>
+        <TextInput ref={pwdValue} style={styles.loginInput} placeholder="비밀번호를 입력하세요." value={passwd} onChangeText={setPasswd}/>
         <TouchableOpacity style={styles.loginButton} onPress={()=>navigation.push('Home')}>
-          <Text style={{color:'white'}}>Login</Text>
+          <Text style={{color:'white'}}>로그인</Text>
+          <Text style={{color:'white'}}>{isLoginSuccess}</Text>
         </TouchableOpacity>
       </View>
 
