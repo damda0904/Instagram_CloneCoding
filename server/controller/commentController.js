@@ -55,12 +55,12 @@ export async function deleteComment(req, res) {
     if (parent.parent == "post") {
         const post = await postRepository.deleteComment(postId, id);
 
-        res.status(200).json(post);
+        res.status(204).json(post);
     }
     else if (parent.parent == "comment") {
         const comment = await commentRepository.deleteChild(id);
 
-        res.status(201).json(comment);
+        res.status(204).json(comment);
     }
 }
 
@@ -75,7 +75,7 @@ export async function likeComment(req, res) {
         res.status(400).json({ message: "you cannot like your comment" })
     }
 
-    res.status(201).json(comment);
+    res.status(200).json(comment);
 }
 
 //댓글 좋아요 취소
@@ -84,6 +84,6 @@ export async function unlikeComment(req, res) {
 
     const comment = await commentRepository.unlikeComment(id);
 
-    res.status(201).json(comment)
+    res.status(200).json(comment)
 }
 

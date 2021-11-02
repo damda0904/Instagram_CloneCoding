@@ -57,6 +57,7 @@ export async function deleteComment(id, userDBId) {
             return Comment.findOne({ _id: id, username: user.username })
                 .then(comment => {
                     Comment.findByIdAndDelete(id)
+
                     return comment.parentId;
                 });
         })

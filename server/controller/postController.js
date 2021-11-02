@@ -79,7 +79,7 @@ export async function like(req, res) {
         res.status(404).json({ message: "post not founded" })
     }
     else {
-        res.status(201).json(post)
+        res.status(200).json(post)
     }
 }
 
@@ -92,5 +92,5 @@ export async function unlike(req, res) {
         res.status(400).json("cannot decrease from 0")
     }
 
-    res.status(201).json(post);
+    res.status(200).json(post);
 }

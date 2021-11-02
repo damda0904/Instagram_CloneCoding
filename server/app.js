@@ -4,6 +4,7 @@ import cors from 'cors';
 import postsRouter from './router/postsRouter.js'
 import authRouter from './router/authRouter.js'
 import searchRouter from './router/searchRouter.js';
+import followRouter from './router/followRouter.js';
 import { config } from './config.js';
 import { connectDB } from './db/database.js';
 
@@ -16,6 +17,7 @@ app.use(cors())
 app.use('/posts', postsRouter)
 app.use('/auth', authRouter)
 app.use('/search', searchRouter)
+app.use('/follow', followRouter)
 
 app.use((req, res, next) => {
     res.sendStatus(404);

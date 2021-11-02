@@ -15,7 +15,7 @@ function createJwtToken(id) {
 
 
 export async function signup(req, res) {
-    const { userId, name, username, password, profileImg } = req.body;
+    const { userId, name, username, password, profile } = req.body;
 
     //id 중복 확인
     const foundId = await userRepository.findByUserId(userId);
@@ -39,7 +39,7 @@ export async function signup(req, res) {
         name,
         username,
         password: hashed,
-        profileImg,
+        profile,
     })
 
     //id 대신 보내줄 토큰

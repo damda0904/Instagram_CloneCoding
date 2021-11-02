@@ -9,7 +9,8 @@ const schema = mongoose.Schema({
     hashtag: [String],
     like: { type: Number, required: true },
     commentId: [String],
-    userId: { type: String, required: true },
+    userDBId: { type: String, required: true },
+    name: { type: String, required: true },
     username: { type: String, required: true },
     profile: String,
 
@@ -26,7 +27,8 @@ export async function createPost(post, id) {
             return new Post({
                 ...post,
                 like: 0,
-                userId: id,
+                userDBId: id,
+                name: user.name,
                 username: user.username,
                 profile: user.profile,
             }).save()
@@ -69,7 +71,7 @@ export async function like(id, userDBId) {
             if (!post) {
                 return "404";
             }
-            if (userDBId === post.userId) {
+            if (userDBId === post.userDBId) {
                 return false;
             }
 
@@ -113,9 +115,20 @@ export async function deleteComment(postId, commentId) {
                 }
             }
 
-            console.log(comments)
-
             return Post.findByIdAndUpdate(postId, { commentId: comments })
         })
 }
 
+export async function search(keyword) {
+    const result1 = await userRepository.findByName(keyword)
+
+    const result2 = await Post.find({ hashtag: keyword }).sort({ createdAt: -1 })
+
+    console.log(result2)
+
+    return [...result1, ...result2]
+}
+
+export async function searchByHashtag(keyword) {
+    return Post.find({ hashtag: keyword }).sort({ createdAt: -1 })
+}
