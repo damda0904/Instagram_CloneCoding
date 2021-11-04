@@ -20,13 +20,13 @@ export async function signup(req, res) {
     //id 중복 확인
     const foundId = await userRepository.findByUserId(userId);
     if (foundId) {
-        return res.status(409).json({ message: `${userId} already exists` });
+        return res.status(409).json({ message: `${userId} already exists`, success:false });
     }
 
     //username 중복 확인
     const foundUsername = await userRepository.findByUsername(username);
     if (foundUsername) {
-        return res.status(409).json({ message: `${username} already exists` });
+        return res.status(409).json({ message: `${username} already exists`, success:false });
     }
 
     //패스워드 암호화
@@ -44,7 +44,7 @@ export async function signup(req, res) {
 
     //id 대신 보내줄 토큰
     const token = createJwtToken(id);
-    res.status(201).json({ token, username });
+    res.status(201).json({ token, username, success:true });
 
 }
 

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React,{useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Ionic from "react-native-vector-icons/Ionicons";
 import {NavigationContainer} from "@react-navigation/native";
@@ -53,9 +53,11 @@ const App = () => {
     )
   }
 
+  const [isLogin,setIsLogin] = useState(false)
   return(
     <NavigationContainer>
-      <Stack.Navigator
+      {!isLogin && <Login setIsLogin={setIsLogin}/>}
+      <Stack.Navigator initialRouteName="bottomTabScreen"
         screenOptions={{
           headerShown:false
         }}
